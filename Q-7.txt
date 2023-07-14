@@ -1,0 +1,30 @@
+Q7.What is the purpose of the doGet() and doPost() methods in a servlet?
+
+
+
+
+ANSWER:
+
+
+
+
+In a Java servlet, the `doGet()` and `doPost()` methods are two commonly used methods for handling HTTP GET and POST requests, respectively. Here's an explanation of the purpose of these methods:
+
+1. doGet() Method:
+   - The `doGet()` method is called by the servlet container when an HTTP GET request is received from a client (e.g., a web browser).
+   - Its purpose is to process the GET request and generate an appropriate response.
+   - Typically, the `doGet()` method is used for operations that retrieve data from the server or perform read-only operations.
+   - Examples of operations that can be handled in the `doGet()` method include fetching data from a database, displaying information, or rendering a web page.
+
+2. doPost() Method:
+   - The `doPost()` method is called by the servlet container when an HTTP POST request is received from a client.
+   - Its purpose is to process the POST request, extract the data submitted by the client, and generate a response.
+   - The `doPost()` method is commonly used for operations that modify data on the server or perform write operations.
+   - Examples of operations that can be handled in the `doPost()` method include submitting a form, saving data to a database, or processing user input.
+
+The key difference between `doGet()` and `doPost()` lies in how the data is transmitted between the client and the server:
+
+- `doGet()` requests transmit data in the URL parameters as part of the request's query string. The parameters are visible in the URL itself.
+- `doPost()` requests send data in the body of the HTTP request, which is not visible in the URL. This method is commonly used when dealing with sensitive or large amounts of data.
+
+In practice, it's common for servlets to implement both `doGet()` and `doPost()` methods to handle GET and POST requests appropriately. This allows the servlet to respond differently based on the HTTP method used by the client. By overriding these methods in the servlet class, you can implement the desired functionality to process and respond to GET and POST requests effectively.

@@ -1,0 +1,61 @@
+Q2.What are the steps involved in JDBC?
+
+
+
+ANSWER:
+
+
+
+The steps involved in using JDBC (Java Database Connectivity) in a Java application are as follows:
+
+1. Load the JDBC Driver:
+   - The first step is to load the appropriate JDBC driver for the database you want to connect to. The driver is responsible for establishing the connection and communicating with the database.
+   - Load the driver class using `Class.forName()` or `DriverManager.registerDriver()` method. For example:
+   ```java
+   Class.forName("com.mysql.jdbc.Driver");
+   ```
+
+2. Establish a Connection:
+   - Create a connection to the database using the `DriverManager.getConnection()` method, passing the appropriate connection URL, username, and password.
+   - The connection URL is specific to the database and typically includes information like the database name, host, and port number. For example:
+   ```java
+   Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "username", "password");
+   ```
+
+3. Create a Statement or PreparedStatement:
+   - Create a Statement or PreparedStatement object to execute SQL queries or commands.
+   - The Statement interface is used for executing static SQL statements, while the PreparedStatement interface is used for executing parameterized SQL statements. For example:
+   ```java
+   Statement statement = connection.createStatement();
+   PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO mytable (name, age) VALUES (?, ?)");
+   ```
+
+4. Execute SQL Queries or Commands:
+   - Use the created Statement or PreparedStatement to execute SQL queries or commands using the `executeQuery()` or `executeUpdate()` methods.
+   - `executeQuery()` is used for retrieving data from the database, while `executeUpdate()` is used for executing INSERT, UPDATE, DELETE, and other data manipulation statements. For example:
+   ```java
+   ResultSet resultSet = statement.executeQuery("SELECT * FROM mytable");
+   int rowsAffected = preparedStatement.executeUpdate();
+   ```
+
+5. Process the Result:
+   - If you executed a SELECT statement, process the ResultSet object to retrieve and manipulate the returned data.
+   - Use methods like `next()`, `getString()`, `getInt()`, etc., to navigate through the ResultSet and retrieve the column values. For example:
+   ```java
+   while (resultSet.next()) {
+       String name = resultSet.getString("name");
+       int age = resultSet.getInt("age");
+       // Process retrieved data
+   }
+   ```
+
+6. Close Resources:
+   - Close the ResultSet, Statement, and Connection objects to release database resources and avoid memory leaks.
+   - Use the `close()` method on each object in the reverse order of their creation. For example:
+   ```java
+   resultSet.close();
+   statement.close();
+   connection.close();
+   ```
+
+These steps outline the general workflow of using JDBC in a Java application. It involves loading the driver, establishing a connection, executing SQL queries or commands, processing the results, and properly closing the resources.

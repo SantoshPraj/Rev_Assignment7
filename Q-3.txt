@@ -1,0 +1,46 @@
+Q3.What are the types of statement in JDBC in java?
+
+
+ANSWER:
+
+
+In JDBC (Java Database Connectivity), there are three main types of statements available for executing SQL queries and commands:
+
+1. Statement:
+   - The Statement interface is used to execute static SQL statements that do not contain parameters.
+   - It is created using the `createStatement()` method of the Connection object.
+   - The Statement object allows you to execute queries and commands using the `executeQuery()` and `executeUpdate()` methods, respectively.
+   - Example usage:
+     ```java
+     Statement statement = connection.createStatement();
+     ResultSet resultSet = statement.executeQuery("SELECT * FROM mytable");
+     int rowsAffected = statement.executeUpdate("INSERT INTO mytable (name, age) VALUES ('John', 25)");
+     ```
+
+2. PreparedStatement:
+   - The PreparedStatement interface is used to execute parameterized SQL statements, where the values can be dynamically set.
+   - It is created using the `prepareStatement()` method of the Connection object, with a SQL statement containing placeholders for parameters.
+   - The PreparedStatement object allows you to set parameter values using methods like `setString()`, `setInt()`, etc., and execute the statement using the `executeQuery()` or `executeUpdate()` methods.
+   - Parameterized statements provide benefits like improved performance and protection against SQL injection attacks.
+   - Example usage:
+     ```java
+     PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO mytable (name, age) VALUES (?, ?)");
+     preparedStatement.setString(1, "John");
+     preparedStatement.setInt(2, 25);
+     int rowsAffected = preparedStatement.executeUpdate();
+     ```
+
+3. CallableStatement:
+   - The CallableStatement interface is used to execute stored procedures, which are precompiled database routines that can accept input parameters and return output parameters or result sets.
+   - It is created using the `prepareCall()` method of the Connection object, with a SQL statement representing the stored procedure call.
+   - The CallableStatement object allows you to set input parameters using methods like `setString()`, `setInt()`, etc., and retrieve output parameters or result sets using methods like `registerOutParameter()` and `executeQuery()`.
+   - Example usage:
+     ```java
+     CallableStatement callableStatement = connection.prepareCall("{CALL myprocedure(?, ?)}");
+     callableStatement.setString(1, "John");
+     callableStatement.registerOutParameter(2, Types.INTEGER);
+     callableStatement.execute();
+     int outputValue = callableStatement.getInt(2);
+     ```
+
+These statement types provide different levels of functionality and flexibility for executing SQL statements in JDBC. The choice of which type to use depends on the nature of the SQL statement, whether it requires parameters, and the specific requirements of the database operations you are performing.

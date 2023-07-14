@@ -1,0 +1,31 @@
+Q4.What is Servlet in Java?
+
+
+
+
+
+ANSWER:
+
+
+
+In Java, a Servlet is a server-side component that dynamically generates web content and processes client requests. It is a Java class that conforms to the Java Servlet API, which provides a standard way to interact with web clients and web servers.
+
+Here are some key points about Servlets:
+
+1. Web Application Component: Servlets are the building blocks of web applications. They are responsible for handling client requests, processing them, and generating dynamic web content to be sent back to the clients.
+
+2. Server-side Execution: Servlets are executed on the server side within a Java-enabled web server, such as Apache Tomcat, Jetty, or IBM WebSphere. They are not directly accessed or executed by clients.
+
+3. HTTP Request and Response Handling: Servlets receive HTTP requests from clients (e.g., web browsers) and generate HTTP responses. They can handle different types of requests (e.g., GET, POST) and perform tasks like data processing, form handling, session management, and database interactions.
+
+4. Lifecycle and Callback Methods: Servlets have a defined lifecycle, starting from initialization and ending with destruction. During their lifecycle, Servlets can respond to specific events using callback methods provided by the Servlet API, such as `init()`, `service()`, and `destroy()`.
+
+5. Multi-threaded Execution: Servlets are designed to handle multiple concurrent client requests. Each request is typically processed by a separate thread, allowing for efficient handling of concurrent connections.
+
+6. Java Servlet API: Servlets adhere to the Java Servlet API, which provides a set of classes and interfaces for developing Servlet-based applications. This API defines the contract between web servers and Servlet containers, ensuring compatibility and portability across different implementations.
+
+7. Deployment and Configuration: Servlets are packaged as part of a web application, typically in a WAR (Web Application Archive) file. They are deployed on a web server and can be configured using deployment descriptors (web.xml) or annotations.
+
+8. Framework Integration: Servlets can be integrated with various Java web frameworks, such as JavaServer Faces (JSF), Spring MVC, or Struts. These frameworks provide additional abstractions and features on top of Servlets to simplify web application development.
+
+Servlets play a crucial role in developing dynamic web applications in Java. They provide a server-side programming model for handling client requests, generating dynamic content, and interacting with other web components and services.

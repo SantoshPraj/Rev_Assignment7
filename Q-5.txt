@@ -1,0 +1,43 @@
+Q5.Explain the life Cycle of servlet?
+
+
+
+
+ANSWER:
+
+
+
+
+The life cycle of a servlet in Java defines the stages through which a servlet goes, from its instantiation to destruction. The Servlet API provides methods that allow you to override and customize the behavior at each stage. Here is an overview of the life cycle stages of a servlet:
+
+1. Servlet Instantiation:
+   - When a servlet is first requested by a client or when the web server starts, an instance of the servlet is created.
+   - The servlet container (web server or servlet container) calls the servlet's `init()` method to perform any initialization tasks.
+   - The `init()` method is called only once during the life cycle of the servlet.
+
+2. Request Handling:
+   - After the servlet is initialized, it is ready to handle client requests.
+   - For each request, the servlet container creates a new thread or retrieves an available thread from a thread pool to handle the request.
+   - The servlet container calls the servlet's `service()` method, passing the appropriate `HttpServletRequest` and `HttpServletResponse` objects.
+   - The `service()` method determines the type of request (GET, POST, etc.) and delegates the request to the appropriate method (`doGet()`, `doPost()`, etc.) based on the HTTP method.
+
+3. Request Processing:
+   - The appropriate `doXxx()` method (e.g., `doGet()`, `doPost()`) is called to process the request and generate a response.
+   - It is the responsibility of the developer to override the appropriate method(s) and implement the desired functionality.
+   - The `doXxx()` methods are called for each request, allowing the servlet to handle different types of requests.
+
+4. Response Generation:
+   - The servlet processes the request and generates a response to be sent back to the client.
+   - The response can include dynamic content, HTML, XML, or any other format based on the application's logic.
+   - The response is written to the `HttpServletResponse` object obtained from the `service()` method.
+
+5. Servlet Destruction:
+   - When the web server is shut down or the servlet container decides to unload the servlet (due to inactivity or configuration changes), the servlet is destroyed.
+   - The servlet container calls the servlet's `destroy()` method to perform any cleanup tasks or resource release.
+   - The `destroy()` method is called only once during the life cycle of the servlet.
+
+During the life cycle, the servlet may handle multiple requests concurrently, with each request being processed in a separate thread. The `init()` and `destroy()` methods are called once, while the `service()` and `doXxx()` methods are called for each request.
+
+It's important to note that the servlet container manages the life cycle of the servlet and is responsible for instantiating, initializing, and destroying the servlet as needed.
+
+By overriding the appropriate methods in the servlet class, you can customize the behavior at each stage of the life cycle to suit the specific requirements of your application.
